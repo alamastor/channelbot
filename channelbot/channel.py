@@ -25,3 +25,10 @@ class Channel:
             json={'name': name},
             headers=headers(token))
         r.raise_for_status()
+
+    def delete(self, token):
+        r = requests.delete(
+            self.url ,
+            headers=headers(token)
+        )
+        r.raise_for_status()
