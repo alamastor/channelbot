@@ -1,3 +1,5 @@
+import logging
+
 import requests
 
 from .consts import API_URL
@@ -15,8 +17,8 @@ class Server:
         r.raise_for_status()
         return [Channel(c['id'], c['name'], c['type']) for c in r.json()]
 
-
     def create_channel(self, token, name, channel_type='voice'):
+        logging.info(f'Creating channel {name} in {self.id}')
         if channel_type == 'voice':
             c_type = 2
         elif channel_type == 'text':

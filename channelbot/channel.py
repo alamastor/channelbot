@@ -1,3 +1,5 @@
+import logging
+
 import requests
 
 from .consts import API_URL
@@ -20,15 +22,12 @@ class Channel:
         return f'<Channel - id: {self.id}, name: {self.name}>, type: {self.type}'
 
     def rename(self, token, name):
+        logging.info(f'renaming chanel {self.name} to {name}')
         r = requests.patch(
-            self.url ,
-            json={'name': name},
-            headers=headers(token))
+            self.url, json={'name': name}, headers=headers(token))
         r.raise_for_status()
 
     def delete(self, token):
-        r = requests.delete(
-            self.url ,
-            headers=headers(token)
-        )
+        logging.info(f'deleting chanel {self.name}')
+        r = requests.delete(self.url, headers=headers(token))
         r.raise_for_status()
