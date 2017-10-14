@@ -21,7 +21,7 @@ def run(token, servers_ids, channel_names, channel_count=10, wait_seconds=30):
                 for _ in range(channel_count - len(list(voice_channels))):
                     server.create_channel(token, random.choice(channel_names))
             except HTTPError as e:
-                print(
+                logging.error(
                     f'Request to server {server.id} failed with code {e.response.status_code}.'
                 )
         time.sleep(wait_seconds - (time.time() - start_time))
