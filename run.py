@@ -1,9 +1,20 @@
+import argparse
+import logging
+
 import channelbot
 import config
 import channel_names
-import logging
 
 logging.basicConfig(
     level=logging.INFO, format='%(levelname)s %(asctime)s %(message)s')
 
-channelbot.run(config.BOT_TOKEN, config.SERVERS, channel_names.NAMES)
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    '-f', '--frequency', type=int, default=30, help='name change frequency')
+args = parser.parse_args()
+
+channelbot.run(
+    config.BOT_TOKEN,
+    config.SERVERS,
+    channel_names.NAMES,
+    wait_seconds=args.frequency)
