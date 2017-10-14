@@ -1,3 +1,3 @@
 CLIENT_ID = '123453426'
-TOKEN = 'asodnfoi2nm'
+BOT_TOKEN = 'asodnfoi2nm'
 CHANNELS = ['1123456', '1234123']
